@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Furniture Store</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script>
+        // Fungsi untuk memuat produk dari API
+        async function loadProducts() {
+            try {
+                const response = await fetch('http://localhost/modul4/api.php');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+                const products = await response.json();
+                const grid = document.querySelector('.recommendation-grid');
+                grid.innerHTML = ''; // Bersihkan konten statis sebelumnya
+                
+                // Iterasi data produk dan tambahkan ke grid
+                products.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+
+                    // Konversi gambar base64 menjadi URL yang valid
+                    const imageUrl = `data:image/jpeg;base64,${product.image}`;
+
+                    card.innerHTML = `
+                        <img src="${imageUrl}" alt="${product.name}">
+                        <p>${product.name}</p>
+                        <p>Price: $${product.price}</p><br>
+                        <p>Product Code: ${product.product_code}</p>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (error) {
+                console.error(error);
+                alert('Gagal memuat produk. Silakan coba lagi.');
+            }
+        }
+
+        // Muat produk saat halaman selesai dimuat
+        window.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-center">
+                <a href="index.html">Home</a>
+                <a href="addProduct.html">Add Product</a>
+                <a href="deleteProduct.html">Delete Product</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Jumbotron / Hero Section -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="jumbotron-content">
+                <h1>Modern Interior Design Studio</h1>
+                <p>Modern Interior Design Studio hadir untuk menciptakan ruang elegan dan fungsional, dengan sentuhan desain kontemporer.</p>
+                <div class="jumbotron-buttons">
+                    <a href="#" class="btn">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendations -->
+    <section class="recommendations">
+        <h2>Product</h2>
+        <div class="recommendation-grid">
+            <!-- Produk akan dimuat secara dinamis di sini -->
+        </div>
+    </section>
+
+    <!-- Discount Section -->
+    <section class="discount">
+        <div class="discount-content">
+            <h2>Modern Furniture</h2>
+            <p>Make your house comfortable! 50% OFF</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Furniture Store. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
