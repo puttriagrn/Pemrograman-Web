@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjumlahan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Penjumlahan</h2>
+        <label for="num1">Bilangan pertama</label>
+        <input type="number" id="num1" placeholder="Masukkan angka pertama">
+
+        <label for="num2">Bilangan kedua</label>
+        <input type="number" id="num2" placeholder="Masukkan angka kedua">
+
+        <div class="button-group">
+            <button onclick="hitungJumlah()">Jumlahkan</button>
+            <button onclick="resetForm()">Reset</button>
+        </div>
+
+        <p>Hasil: <span id="hasil">0</span></p>
+    </div>
+
+    <script>
+        function hitungJumlah() {
+            const num1 = parseFloat(document.getElementById('num1').value) || 0;
+            const num2 = parseFloat(document.getElementById('num2').value) || 0;
+            const hasil = num1 + num2;
+            document.getElementById('hasil').textContent = hasil;
+        }
+
+        function resetForm() {
+            document.getElementById('num1').value = '';
+            document.getElementById('num2').value = '';
+            document.getElementById('hasil').textContent = '0';
+        }
+    </script>
+</body>
+</html>

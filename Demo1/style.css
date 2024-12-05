@@ -1,0 +1,77 @@
+body {
+    font-family: "Arial", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e6e6fa;
+    margin: 0;
+}
+
+.calculator {
+    background-color: #2c2c54;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.calculator-display {
+    background-color: #1e1e2d;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    text-align: right;
+    position: relative;
+}
+
+.equation-display {
+    font-size: 1em;
+    color: #87ceeb;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    margin: 0;
+}
+
+#result {
+    font-size: 2.5em;
+    margin: 0;
+    padding-top: 30px; /* Memberikan jarak dari atas */
+}
+
+.calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 20px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 10px;
+    background-color: #3c3c66;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5c5c86;
+}
+
+.key-operator {
+    background-color: #6a67d9;
+}
+
+.key-operator:hover {
+    background-color: #7875f1;
+}
+
+.key-clear {
+    background-color: #e74c3c;
+}
+
+.key-clear:hover {
+    background-color: #ff5e57;
+}
